@@ -250,6 +250,7 @@ class Board {
             if (r == row) blockedNum -= 2;
             if (blockedNum == 0) blockedNum = 1;
             unblockedNum -= blockedNum;
+
             setContent(col, row, BLOCKED);
             setContent(c, row, BLOCKED);
             setContent(col, r, BLOCKED);
