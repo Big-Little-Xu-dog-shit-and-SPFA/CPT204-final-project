@@ -244,7 +244,12 @@ class Board {
 
         // Complete the code
         // Hints: Consider using the method setContent and the variable unblockedNum
-        if (unblockedNum != 0) {
+        int blockedNum = 4;
+        if (unblockedNum() != 0) {
+            if (c == col) blockedNum -= 2;
+            if (r == row) blockedNum -= 2;
+            if (blockedNum == 0) blockedNum = 1;
+            unblockedNum -= blockedNum;
             setContent(col, row, BLOCKED);
             setContent(c, row, BLOCKED);
             setContent(col, r, BLOCKED);
