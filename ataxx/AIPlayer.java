@@ -108,7 +108,9 @@ class AIPlayer extends Player {
                         int val1 = calValue(b, currMove);
                         b.createMove(currMove);
                         int val2 = calOppoValue(b, b.nextMove());
-                        double val = val1 * 1.5 / val2;
+                        // 越往棋盘中间走，分越高
+                        double val3 = Math.pow('d' - col2, 2) + Math.pow('4' - row2, 2) + 1;
+                        double val = (val1 * 1.5) / (val2 * val3);
                         if (globalVal[1] < val) {
                             globalVal[1] = val;
                             assistPossibleMoves.clear();

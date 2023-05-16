@@ -18,44 +18,9 @@ public class Main {
 
 
 
-//    public static void main(String[] args0) {
-//        CommandArgs args =
-//            new CommandArgs("--display{0,1}", args0);
-//
-//        Game game;
-//        if (args.contains("--display")) {
-//            GUI display = new GUI("Ataxx");
-//            game = new Game(display, display, display);
-//            display.pack();
-//            display.setVisible(true);
-//        } else {
-//            ArrayList<Reader> inReaders = new ArrayList<>();
-//            if (args.get("--").isEmpty()) {
-//                inReaders.add(new InputStreamReader(System.in));
-//            } else {
-//                for (String name : args.get("--")) {
-//                    if (name.equals("-")) {
-//                        inReaders.add(new InputStreamReader(System.in));
-//                    } else {
-//                        try {
-//                            inReaders.add(new FileReader(name));
-//                        } catch (IOException excp) {
-//                            System.err.printf("Could not open %s", name);
-//                            System.exit(1);
-//                        }
-//                    }
-//                }
-//            }
-//            game = new Game(new TextSource(inReaders),
-//                            (b) -> { }, new TextReporter());
-//        }
-//        System.exit(game.play());
-//    }
-
-
-
     public static void main(String[] args0) {
-        CommandArgs args = new CommandArgs("--display{0,1}", args0);
+        CommandArgs args =
+            new CommandArgs("--display{0,1}", args0);
 
         Game game;
         if (args.contains("--display")) {
@@ -81,8 +46,9 @@ public class Main {
                     }
                 }
             }
-            GUI display = new GUI("Ataxx"); // 创建GUI对象
-            game = new Game(new TextSource(inReaders), display, display); // 传递GUI对象作为参数
+            // GUI display = new GUI("Ataxx"); // 创建GUI对象
+            game = new Game(new TextSource(inReaders),
+                            (b) -> { }, new TextReporter());
         }
         System.exit(game.play());
     }
