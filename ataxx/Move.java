@@ -80,6 +80,7 @@ class Move {
         int col1 = location1.charAt(0);
         int row1 = location1.charAt(1);
 
+        if (col0 == col1 && row0 == row1) return false;
         if (Math.abs(col0 - col1) <= 1 && Math.abs(row0 - row1) <= 1) return true;
         return false;
     }
