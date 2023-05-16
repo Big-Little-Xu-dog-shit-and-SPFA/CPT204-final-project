@@ -1,5 +1,7 @@
 package ataxx;
 
+import java.util.Scanner;
+
 /** A Player that receives its moves from its Ataxx Game's getMoveCmnd method. */
 class Manual extends Player {
 

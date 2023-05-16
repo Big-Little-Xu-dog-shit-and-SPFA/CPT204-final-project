@@ -86,5 +86,4 @@ class Command {
         }
         throw new Error("Internal failure: error command did not match.");
     }
-
 }

@@ -64,7 +64,12 @@ class Game {
     /** Return a command from the current source, using PROMPT as a
      *  prompt, if needed. */
     String getCommand(String prompt) {
-        String cmnd = input.getCommand(prompt);
+        String cmnd = null;
+        try {
+            cmnd = input.getCommand(prompt);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return Objects.requireNonNullElse(cmnd, "quit");
     }
 

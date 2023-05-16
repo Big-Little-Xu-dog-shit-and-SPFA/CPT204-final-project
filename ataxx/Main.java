@@ -16,8 +16,6 @@ public class Main {
      *  default.
      */
 
-
-
     public static void main(String[] args0) {
         CommandArgs args =
             new CommandArgs("--display{0,1}", args0);
@@ -46,7 +44,6 @@ public class Main {
                     }
                 }
             }
-            // GUI display = new GUI("Ataxx"); // 创建GUI对象
             game = new Game(new TextSource(inReaders),
                             (b) -> { }, new TextReporter());
         }

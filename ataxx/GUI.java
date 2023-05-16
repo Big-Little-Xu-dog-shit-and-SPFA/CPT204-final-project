@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 
 class ScorePanel extends JPanel {
@@ -46,7 +49,14 @@ class GUI implements View, CommandSource, Reporter {
     //private JLabel scoreLabel;
     private ScorePanel scorePanel;
 
+    /** Readers to use after the first. */
+    private String command;
+
     GUI(String ataxx) {
+        //frame = new JFrame("Ataxx Game");
+
+        //command = null;
+
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 start();
@@ -55,6 +65,7 @@ class GUI implements View, CommandSource, Reporter {
     }
 
     private void createAndShowGUI(String ataxx) {
+        command = "new";
         frame.getContentPane().removeAll();
         frame = new JFrame(ataxx);
         mainPanel = new JPanel(new BorderLayout());
@@ -69,8 +80,8 @@ class GUI implements View, CommandSource, Reporter {
                 boardPanel.add(gridButtons[row][col]);
             }
         }
-        button1 = new JButton("Button 1");
-        button2 = new JButton("Button 2");
+//        button1 = new JButton("Button 1");
+//        button2 = new JButton("Button 2");
         //scoreLabel = new JLabel("Score: 0");
         scorePanel = new ScorePanel();
 
@@ -78,32 +89,34 @@ class GUI implements View, CommandSource, Reporter {
         // 创建游戏控制面板
         JPanel controlPanel = new JPanel();
         controlPanel.setLayout(new FlowLayout());
-        controlPanel.add(button1);
-        controlPanel.add(button2);
         // 创建顶部面板
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new BorderLayout());
         topPanel.add(scorePanel, BorderLayout.CENTER);
 
-//        JButton newGameButton = new JButton("New Game");
-//        JButton quitButton = new JButton("Quit");
+        JButton newGameButton = new JButton("New Game");
+        JButton quitButton = new JButton("Quit");
 
         // 添加按钮点击事件监听器
-//        newGameButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                // 处理开始新游戏的逻辑
-//                // 在这里编写代码...
-//            }
-//        });
-//
-//        quitButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                // 处理退出游戏的逻辑
-//                // 在这里编写代码...
-//            }
-//        });
+        newGameButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 处理开始新游戏的逻辑
+                // 在这里编写代码...
+                command = "new";
+            }
+        });
+
+        quitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 处理退出游戏的逻辑
+                // 在这里编写代码...
+                command = "quit";
+            }
+        });
+        controlPanel.add(newGameButton);
+        controlPanel.add(quitButton);
 
         // 将棋盘面板添加到中央面板并设置间距
         JPanel boardContainer = new JPanel();
@@ -134,7 +147,6 @@ class GUI implements View, CommandSource, Reporter {
 
     private void start() {
         // 创建 JFrame
-        frame = new JFrame("Ataxx Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         int width = 400;
         int height = 600;
@@ -203,7 +215,7 @@ class GUI implements View, CommandSource, Reporter {
         });
         multiplayerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                showColorPage();
+                createAndShowGUI("ataxx");
             }
         });
 
@@ -273,22 +285,22 @@ class GUI implements View, CommandSource, Reporter {
 
     @Override
     public void announceWinner(PieceState state) {
-        JOptionPane.showMessageDialog(frame, "Winner: " + state);
+        //JOptionPane.showMessageDialog(frame, "Winner: " + state);
     }
 
     @Override
     public void announceMove(Move move, PieceState player) {
-        JOptionPane.showMessageDialog(frame, "Player " + player + " moved: " + move);
+        //JOptionPane.showMessageDialog(frame, "Player " + player + " moved: " + move);
     }
 
     @Override
     public void message(String format, Object... args) {
-        JOptionPane.showMessageDialog(frame, String.format(format, args));
+        //JOptionPane.showMessageDialog(frame, String.format(format, args));
     }
 
     @Override
     public void error(String format, Object... args) {
-        JOptionPane.showMessageDialog(frame, "Error: " + String.format(format, args), "Error", JOptionPane.ERROR_MESSAGE);
+        //JOptionPane.showMessageDialog(frame, "Error: " + String.format(format, args), "Error", JOptionPane.ERROR_MESSAGE);
     }
 
     public void setVisible(boolean b) {
