@@ -91,7 +91,10 @@ class Board {
             return false;
         } else {
             if (move.isPass()) {
-                return !couldMove(nextMove());
+                if (couldMove(nextMove)){
+                    throw error("illegal pass: you could jump or clone");
+                }
+                return (!couldMove(nextMove())) && couldMove(nextMove().opposite());
             } else if (move.col1() < 'a'
                     || move.col1() > 'g'
                     || move.row1() < '1'
@@ -207,7 +210,6 @@ class Board {
     /** Update to indicate that the current player passes, assuming it
      *  is legal to do so.  */
     void pass() {
-        assert couldMove(nextMove);
         nextMove = nextMove.opposite();
         announce();
     }
