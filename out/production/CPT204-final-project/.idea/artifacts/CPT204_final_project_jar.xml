@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="CPT204-final-project:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/CPT204_final_project_jar</output-path>
+    <root id="archive" name="CPT204-final-project.jar">
+      <element id="module-output" name="CPT204-final-project" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/library/junit-4.12.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/out/production/CPT204 2223 Final Project Skeleton Code, Library, Demo Video/library/junit-4.12.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
