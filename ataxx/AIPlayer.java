@@ -45,7 +45,6 @@ class AIPlayer extends Player {
         int randomIndex = (int) (Math.random() * moveArrayLength);
         for(int i = 0; i < moveArrayLength; i++){
             if (i == randomIndex){
-                b.createMove(listOfMoves.get(i));
                 lastFoundMove = listOfMoves.get(i);
             }
         }
