@@ -180,6 +180,8 @@ class GUI implements View, CommandSource, Reporter {
                 // 处理开始新游戏的逻辑
                 // 在这里编写代码...
                 commands.add("new");
+                isBlocked = false;
+                winner = PieceState.EMPTY;
             }
         });
 
@@ -198,7 +200,7 @@ class GUI implements View, CommandSource, Reporter {
                 if (isBlocked == false) {
                     isBlocking = true;
                     delDupWin(ataxx);
-                    createAndShowGUI("Blocking");
+                    createAndShowGUI(ataxx);
                 }
             }
         });
