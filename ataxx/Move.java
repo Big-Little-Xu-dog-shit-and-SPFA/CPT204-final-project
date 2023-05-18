@@ -91,7 +91,16 @@ class Move {
 	  */
     static boolean isJump(String location0, String location1) {
         // complete the code
-		if (!isClone(location0, location1)) return true;
+		if (!isClone(location0, location1)) {
+            int col0 = location0.charAt(0);
+            int row0 = location0.charAt(1);
+
+            int col1 = location1.charAt(0);
+            int row1 = location1.charAt(1);
+
+            if (col0 == col1 && row0 == row1) return false;
+            if (Math.abs(col0 - col1) <= 2 && Math.abs(row0 - row1) <= 2) return true;
+        }
         return false;
     }
 
